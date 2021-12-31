@@ -1,0 +1,23 @@
+// Mixins
+@use './variables' as *;
+
+@mixin btn-reset {
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+@mixin flex-row($just: initial, $align: initial, $gap: initial) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $just;
+  align-items: $align;
+  gap: $gap;
+}
+@mixin flex-col($just: initial, $align: initial, $gap: initial) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $just;
+  align-items: $align;
+  gap: $gap;
+}

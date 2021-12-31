@@ -1,0 +1,22 @@
+// Typography
+@use '../abstracts' as *;
+
+// # Basics
+html {
+  font-size: $font__size;
+}
+body {
+  font-family: $font__family;
+}
+
+// # Headings | paragraphs | etc..
+h1 {
+}
+h2 {
+}
+
+// # Icons
+i {
+}
+
+// # Specifics
