@@ -3,27 +3,44 @@
 // # Colors
 
 // ## Primary
-
-// ## Secondary
+$orange: hsl(26, 100%, 55%);
+$pale__orange: hsl(25, 100%, 94%);
 
 // ## Neutral
+$dark__blue: hsl(220, 13%, 13%);
+$grayish__blue: hsl(220, 14%, 75%);
+$light-grayish__blue: hsl(223, 64%, 94%);
+$dark-grayish__blue: hsl(219, 9%, 45%);
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%); // with 75% opacity for lightbox background
 
 // # Typography
 $font__size: 16px;
-$font__family: sans-serif;
+$font__family: 'Kumbh Sans', sans-serif; // weights: 400, 700
 
 // # Others
+$faded__box-shadow: 0 0.75rem 2rem -1.5rem $black;
 
 // # Transitions
 $transition: all 0.3s;
+$snap__transition: all 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+$jiggle__transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
 // # Breakpoints
+$mob-break: 800px;
+$special-break-1: 850px;
 
 // # Custom Props
 :root {
-  // # Colors
-
   // # Typography
 
   // # Others
+  --page-padding: min(10vw, 15rem);
+  --spacer-med: 2.5rem;
+  --spacer-small: 1.5rem;
+  --spacer-smallest: 1.875rem;
+  --radius-small: 0.525rem;
+  --radius-med: 1rem;
+  --nav-height: 7.5rem;
+  --nav-padding: 2rem;
 }

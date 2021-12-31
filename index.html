@@ -2,14 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon-32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>project name</title>
+    <title>E-commerce product page | Frontend Mentor</title>
+    <!-- Font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
     <!-- External files -->
     <!-- Sass -->
     <link rel="stylesheet" href="/src/scss/app.scss" />
     <!-- Js -->
-    <script defer src="/src/js/script.js"></script>
+    <script defer src="/src/js/navigation.js"></script>
   </head>
-  <body></body>
+  <body>
+    <section id="navigation">
+      <div class="sidebar">
+        <div class="menu menu__close"><img src="/images/icon-close.svg" /></div>
+        <ul class="sidebar__links">
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="menu menu__open"><img src="/images/icon-menu.svg" /></div>
+      <div class="logo"><img src="/images/logo.svg" /></div>
+      <ul class="links">
+        <li><a href="#">Collections</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="cart">
+        <i class="bx bx-cart cart__icon">
+          <div class="cart__icon__counter">3</div>
+        </i>
+      </div>
+      <!-- addable classes => enable__basket -->
+      <div class="basket">
+        <div class="basket__header">Cart</div>
+        <div class="basket__cart__items"></div>
+      </div>
+      <div class="avatar"><img src="/images/image-avatar.png" /></div>
+    </section>
+  </body>
 </html>

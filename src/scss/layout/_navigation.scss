@@ -1,3 +1,205 @@
 @use '../abstracts' as *;
 @use '../core' as *;
 // Navigation
+
+#navigation {
+  height: var(--nav-height);
+  padding: 0 var(--page-padding);
+  position: relative;
+
+  @include flex-row(initial, center);
+  @media (max-width: $special-break-1) {
+    --spacer-med: 1.25rem;
+  }
+  // border-bottom
+  &::before {
+    content: '';
+    position: absolute;
+    background: $light-grayish__blue;
+    bottom: 0;
+    height: 1px;
+    width: calc(100% - (var(--page-padding) * 2));
+    margin-inline: auto;
+  }
+  .sidebar {
+    width: max(60%, 10rem);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: darken($white, 10%);
+    @include flex-col(initial, flex-start, var(--spacer-med));
+    padding: calc(calc(var(--nav-height) / 2) - 0.5rem) 0 0 var(--page-padding);
+    transition: $snap__transition;
+    z-index: 999;
+
+    //? transition purposes
+    transform: translateX(-100%);
+    .menu__close {
+      cursor: pointer;
+    }
+    &__links {
+      margin-right: auto;
+      @include flex-col(initial, initial, var(--spacer-small));
+      li {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: calc(-1 * var(--spacer-small) / 2);
+          width: 100%;
+          height: 3px;
+          background: $orange;
+          transform: scaleX(0);
+          transform-origin: left;
+        }
+        &:hover::before {
+          transform: scaleX(1);
+        }
+        a {
+          color: $black;
+        }
+      }
+    }
+  }
+  .menu__open {
+    cursor: pointer;
+    margin-right: var(--spacer-med);
+    display: none;
+  }
+  .logo {
+    cursor: pointer;
+    margin-right: var(--spacer-med);
+  }
+  .links {
+    margin-right: auto;
+    @include flex-row(initial, initial, var(--spacer-small));
+    li {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: calc(-1 * calc(var(--nav-height) / 2) + 0.5rem + 3px);
+        width: 100%;
+        height: 3px;
+        background: $orange;
+        transform: scaleX(0);
+        transform-origin: center;
+      }
+      &:hover::before {
+        transform: scaleX(1);
+      }
+      a {
+        color: $grayish__blue;
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+  }
+  .cart {
+    margin-left: auto;
+    position: relative;
+
+    .cart__icon {
+      cursor: pointer;
+      &:hover > .cart__icon__counter {
+        opacity: 1;
+      }
+      &__counter {
+        padding: 0.15rem 0.4rem;
+        background: $orange;
+        border-radius: 50%;
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        opacity: 0.5;
+      }
+    }
+  }
+  .basket {
+    width: 22.5rem;
+    height: 15rem;
+    position: absolute;
+    top: calc(var(--nav-height) - var(--radius-small));
+    right: calc(var(--page-padding) / 1.75);
+    border-radius: var(--radius-small);
+    box-shadow: $faded__box-shadow;
+    @include flex-col();
+    //? transition purposes
+    opacity: 0;
+    transform: translateY(-1rem);
+    pointer-events: none;
+    &__header {
+      width: 100%;
+      padding: var(--spacer-small) var(--spacer-smallest);
+      border-bottom: 1px solid $light-grayish__blue;
+    }
+    &__cart__items {
+    }
+    &.enable__basket {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+  }
+  .avatar {
+    cursor: pointer;
+    margin-left: var(--spacer-med);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    &:hover {
+      border: 2px solid $orange;
+    }
+    img {
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
+body.mobile__mode {
+  #navigation {
+    &::before {
+      display: none;
+    }
+    .menu {
+      display: block;
+    }
+    .links {
+      display: none;
+    }
+    .basket {
+      width: calc(100% - calc(var(--page-padding) * 2));
+      top: calc(var(--nav-height) + var(--radius-small));
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+    }
+    .avatar {
+      img {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+  &.enable__sidebar {
+    #navigation {
+      position: initial;
+      //* Making sure not to affect sidebar and the basket when it isn't enabled
+      & > *:not(.sidebar, .basket:not(.basket__enabled)) {
+        pointer-events: none;
+        opacity: 0.35;
+      }
+
+      &::before {
+        display: none;
+      }
+      //? transition purposes
+      .sidebar {
+        transform: translateX(0);
+      }
+    }
+  }
+}

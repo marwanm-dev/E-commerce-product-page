@@ -17,6 +17,23 @@ h2 {
 
 // # Icons
 i {
+  font-size: 1.5rem;
 }
 
 // # Specifics
+#navigation .basket .basket__header,
+.sidebar .sidebar__links li {
+  font-weight: 900;
+}
+#navigation .cart .cart__icon .cart__icon__counter {
+  color: $white;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+#navigation .cart .cart__icon {
+  color: $grayish__blue;
+  &:hover {
+    color: $black;
+  }
+}
