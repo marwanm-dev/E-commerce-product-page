@@ -15,7 +15,7 @@
   &::before {
     content: '';
     position: absolute;
-    background: $light-grayish__blue;
+    background: $light__grayish__blue;
     bottom: 0;
     height: 1px;
     width: calc(100% - (var(--page-padding) * 2));
@@ -126,7 +126,7 @@
     top: calc(var(--nav-height) - var(--radius-small));
     right: calc(var(--page-padding) / 1.75);
     border-radius: var(--radius-small);
-    box-shadow: $faded__box-shadow;
+    box-shadow: $faded__box__shadow;
     @include flex-col();
     //? transition purposes
     opacity: 0;
@@ -135,7 +135,7 @@
     &__header {
       width: 100%;
       padding: var(--spacer-small) var(--spacer-smallest);
-      border-bottom: 1px solid $light-grayish__blue;
+      border-bottom: 1px solid $light__grayish__blue;
     }
     &__cart__items {
     }

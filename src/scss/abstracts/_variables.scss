@@ -9,8 +9,8 @@ $pale__orange: hsl(25, 100%, 94%);
 // ## Neutral
 $dark__blue: hsl(220, 13%, 13%);
 $grayish__blue: hsl(220, 14%, 75%);
-$light-grayish__blue: hsl(223, 64%, 94%);
-$dark-grayish__blue: hsl(219, 9%, 45%);
+$light__grayish__blue: hsl(223, 64%, 94%);
+$dark__grayish__blue: hsl(219, 9%, 45%);
 $white: hsl(0, 0%, 100%);
 $black: hsl(0, 0%, 0%); // with 75% opacity for lightbox background
 
@@ -19,7 +19,7 @@ $font__size: 16px;
 $font__family: 'Kumbh Sans', sans-serif; // weights: 400, 700
 
 // # Others
-$faded__box-shadow: 0 0.75rem 2rem -1.5rem $black;
+$faded__box__shadow: 0 0.75rem 2rem -1.5rem $black;
 
 // # Transitions
 $transition: all 0.3s;
