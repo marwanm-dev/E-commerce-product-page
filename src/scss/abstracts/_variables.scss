@@ -19,28 +19,29 @@ $font__size: 16px;
 $font__family: 'Kumbh Sans', sans-serif; // weights: 400, 700
 
 // # Others
-$faded__box__shadow: 0 0.75rem 2rem -1.5rem $black;
+$faded__box__shadow: 0 0.35rem 1rem -0.8rem $black;
 
 // # Transitions
-$transition: all 0.3s;
-$snap__transition: all 0.5s cubic-bezier(0.77, 0, 0.18, 1);
-$jiggle__transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$dur-s: 0.3s;
+$dur-l: 0.5s;
+$snap__eff: cubic-bezier(0.77, 0, 0.18, 1);
+$jiggle__eff: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$tr-1: $dur-s $jiggle__eff;
+$tr-2: $dur-l $snap__eff;
 
 // # Breakpoints
-$mob-break: 800px;
-$special-break-1: 850px;
+$desktop-br-fix: 850;
+$mobile-br-1: 800;
 
 // # Custom Props
 :root {
-  // # Typography
-
   // # Others
   --page-padding: min(10vw, 15rem);
-  --spacer-med: 2.5rem;
-  --spacer-small: 1.5rem;
-  --spacer-smallest: 1.875rem;
-  --radius-small: 0.525rem;
-  --radius-med: 1rem;
+  --med-spacer: 2.5rem;
+  --sml--spacer: 1.5rem;
+  --x-sml--spacer: 1.875rem;
+  --sml-radius: 0.525rem;
+  --med-radius: 1rem;
   --nav-height: 7.5rem;
   --nav-padding: 2rem;
 }

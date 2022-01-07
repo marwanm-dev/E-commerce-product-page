@@ -8,8 +8,8 @@
   position: relative;
 
   @include flex-row(initial, center);
-  @media (max-width: $special-break-1) {
-    --spacer-med: 1.25rem;
+  @media (max-width: $desktop-br-fix) {
+    --med-spacer: 1.25rem;
   }
   // border-bottom
   &::before {
@@ -28,9 +28,9 @@
     top: 0;
     left: 0;
     background: darken($white, 10%);
-    @include flex-col(initial, flex-start, var(--spacer-med));
+    @include flex-col(initial, flex-start, var(--med-spacer));
     padding: calc(calc(var(--nav-height) / 2) - 0.5rem) 0 0 var(--page-padding);
-    transition: $snap__transition;
+    transition: all $tr-2;
     z-index: 999;
 
     //? animation purposes
@@ -39,15 +39,16 @@
       cursor: pointer;
     }
     &__links {
+      @include list-reset;
       margin-right: auto;
-      @include flex-col(initial, initial, var(--spacer-small));
+      @include flex-col(initial, initial, var(--sml--spacer));
       li {
         position: relative;
         &::before {
           content: '';
           position: absolute;
           left: 0;
-          bottom: calc(-1 * var(--spacer-small) / 2);
+          bottom: calc(-1 * var(--sml--spacer) / 2);
           width: 100%;
           height: 3px;
           background: $orange;
@@ -65,16 +66,17 @@
   }
   .menu__open {
     cursor: pointer;
-    margin-right: var(--spacer-med);
+    margin-right: var(--med-spacer);
     display: none;
   }
   .logo {
     cursor: pointer;
-    margin-right: var(--spacer-med);
+    margin-right: var(--med-spacer);
   }
   .links {
+    @include list-reset;
     margin-right: auto;
-    @include flex-row(initial, initial, var(--spacer-small));
+    @include flex-row(initial, initial, var(--sml--spacer));
     li {
       position: relative;
       &::before {
@@ -109,7 +111,9 @@
         opacity: 1;
       }
       &__counter {
-        padding: 0.15rem 0.4rem;
+        width: 1rem;
+        height: 1rem;
+        padding: 0.075rem;
         background: $orange;
         border-radius: 50%;
         position: absolute;
@@ -123,9 +127,10 @@
     width: 22.5rem;
     height: 15rem;
     position: absolute;
-    top: calc(var(--nav-height) - var(--radius-small));
+    background: $white;
+    top: calc(var(--nav-height) - var(--sml-radius));
     right: calc(var(--page-padding) / 1.75);
-    border-radius: var(--radius-small);
+    border-radius: var(--sml-radius);
     box-shadow: $faded__box__shadow;
     @include flex-col();
     //? animation purposes
@@ -134,7 +139,7 @@
     pointer-events: none;
     &__header {
       width: 100%;
-      padding: var(--spacer-small) var(--spacer-smallest);
+      padding: var(--sml--spacer) var(--x-sml--spacer);
       border-bottom: 1px solid $light__grayish__blue;
     }
     // TODO
@@ -149,7 +154,7 @@
   }
   .avatar {
     cursor: pointer;
-    margin-left: var(--spacer-med);
+    margin-left: var(--med-spacer);
     border: 2px solid transparent;
     border-radius: 50%;
     &:hover {
@@ -174,7 +179,7 @@ body.mobile__mode {
     }
     .basket {
       width: calc(100% - calc(var(--page-padding) * 2));
-      top: calc(var(--nav-height) + var(--radius-small));
+      top: calc(var(--nav-height) + var(--sml-radius));
       left: 0;
       right: 0;
       margin-inline: auto;
