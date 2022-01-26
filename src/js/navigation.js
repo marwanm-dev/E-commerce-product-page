@@ -1,5 +1,5 @@
 // Variables
-const navigation = document.querySelector('#navigation');
+const navigation = document.querySelector('.navigation');
 const cart = document.querySelector('.cart');
 const basket = document.querySelector('.basket');
 const menus = document.querySelectorAll('.menu');

@@ -2,15 +2,21 @@
 @use '../core' as *;
 // Navigation
 
-#navigation {
+.navigation {
   height: var(--nav-height);
   padding: 0 var(--page-padding);
   position: relative;
+
+  --dynamic-space: var(--med-spacer);
+  @include media($mobile-br-1) {
+    --dynamic-space: var(--x-sml-spacer);
+  }
 
   @include flex-row(initial, center);
   @media (max-width: $desktop-br-fix) {
     --med-spacer: 1.25rem;
   }
+
   // border-bottom
   &::before {
     content: '';
@@ -27,7 +33,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: darken($white, 10%);
+    background: $white;
     @include flex-col(initial, flex-start, var(--med-spacer));
     padding: calc(calc(var(--nav-height) / 2) - 0.5rem) 0 0 var(--page-padding);
     transition: all $tr-2;
@@ -41,14 +47,14 @@
     &__links {
       @include list-reset;
       margin-right: auto;
-      @include flex-col(initial, initial, var(--sml--spacer));
+      @include flex-col(initial, initial, var(--sml-spacer));
       li {
         position: relative;
         &::before {
           content: '';
           position: absolute;
           left: 0;
-          bottom: calc(-1 * var(--sml--spacer) / 2);
+          bottom: calc(-1 * var(--sml-spacer) / 2);
           width: 100%;
           height: 3px;
           background: $orange;
@@ -66,17 +72,17 @@
   }
   .menu__open {
     cursor: pointer;
-    margin-right: var(--med-spacer);
+    margin-right: var(--dynamic-space);
     display: none;
   }
   .logo {
     cursor: pointer;
-    margin-right: var(--med-spacer);
+    margin-right: var(--dynamic-space);
   }
   .links {
     @include list-reset;
     margin-right: auto;
-    @include flex-row(initial, initial, var(--sml--spacer));
+    @include flex-row(initial, initial, var(--sml-spacer));
     li {
       position: relative;
       &::before {
@@ -106,7 +112,6 @@
     position: relative;
 
     .cart__icon {
-      cursor: pointer;
       &:hover > .cart__icon__counter {
         opacity: 1;
       }
@@ -139,7 +144,7 @@
     pointer-events: none;
     &__header {
       width: 100%;
-      padding: var(--sml--spacer) var(--x-sml--spacer);
+      padding: var(--sml-spacer) var(--x-sml-spacer);
       border-bottom: 1px solid $light__grayish__blue;
     }
     // TODO
@@ -167,7 +172,7 @@
   }
 }
 body.mobile__mode {
-  #navigation {
+  .navigation {
     &::before {
       display: none;
     }
@@ -192,12 +197,12 @@ body.mobile__mode {
     }
   }
   &.enable__sidebar {
-    #navigation {
+    .navigation {
       position: initial;
       //* Making sure not to affect sidebar and the basket when it isn't enabled
       & > *:not(.sidebar, .basket:not(.basket__enabled)) {
         pointer-events: none;
-        opacity: 0.35;
+        opacity: 0.25;
       }
 
       &::before {

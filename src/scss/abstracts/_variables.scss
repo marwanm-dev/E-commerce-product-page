@@ -9,7 +9,7 @@ $pale__orange: hsl(25, 100%, 94%);
 // ## Neutral
 $dark__blue: hsl(220, 13%, 13%);
 $grayish__blue: hsl(220, 14%, 75%);
-$light__grayish__blue: hsl(223, 64%, 94%);
+$light__grayish__blue: hsl(223, 64%, 97%);
 $dark__grayish__blue: hsl(219, 9%, 45%);
 $white: hsl(0, 0%, 100%);
 $black: hsl(0, 0%, 0%); // with 75% opacity for lightbox background
@@ -24,7 +24,7 @@ $faded__box__shadow: 0 0.35rem 1rem -0.8rem $black;
 // # Transitions
 $dur-s: 0.3s;
 $dur-l: 0.5s;
-$snap__eff: cubic-bezier(0.77, 0, 0.18, 1);
+$snap__eff: cubic-bezier(0.89, -0.15, 0.24, 0.99);
 $jiggle__eff: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 $tr-1: $dur-s $jiggle__eff;
 $tr-2: $dur-l $snap__eff;
@@ -37,11 +37,12 @@ $mobile-br-1: 800;
 :root {
   // # Others
   --page-padding: min(10vw, 15rem);
+  --lrg-spacer: 4rem;
   --med-spacer: 2.5rem;
-  --sml--spacer: 1.5rem;
-  --x-sml--spacer: 1.875rem;
-  --sml-radius: 0.525rem;
-  --med-radius: 1rem;
+  --sml-spacer: 1.875rem;
+  --x-sml-spacer: 1.5rem;
+  --med-radius: 0.925rem;
+  --sml-radius: 0.55rem;
   --nav-height: 7.5rem;
   --nav-padding: 2rem;
 }

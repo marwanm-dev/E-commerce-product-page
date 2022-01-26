@@ -11,29 +11,66 @@ body {
 
 // # Headings | paragraphs | etc..
 h1 {
+  font-size: 2.5rem;
+  color: $dark__blue;
+  line-height: 1.25;
 }
 h2 {
+  font-size: 1.75rem;
+  color: $dark__blue;
+}
+h3 {
+  font-size: 1rem;
+  color: $grayish__blue;
+}
+p {
+  color: $dark__grayish__blue;
+}
+small {
+  font-size: 0.875rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  color: $orange;
 }
 
 // # Icons
 i {
+  cursor: pointer;
   font-size: 1.5rem;
 }
 
 // # Specifics
-#navigation .basket .basket__header,
+.navigation .basket .basket__header,
 .sidebar .sidebar__links li {
   font-weight: 900;
 }
-#navigation .cart .cart__icon .cart__icon__counter {
+.navigation .cart .cart__icon .cart__icon__counter {
   color: $white;
   text-align: center;
   font-size: 0.7rem;
   font-weight: 900;
 }
-#navigation .cart .cart__icon {
+.navigation .cart .cart__icon {
   color: $grayish__blue;
   &:hover {
     color: $black;
+  }
+}
+.product__content {
+  .product__controls {
+    * {
+      font-weight: 900;
+    }
+    .quantity__control {
+      background: $light__grayish__blue;
+      text-align: center;
+      & > *:not(.quantity) {
+        color: $orange;
+        cursor: pointer;
+      }
+      .quantity {
+        color: $black;
+      }
+    }
   }
 }
