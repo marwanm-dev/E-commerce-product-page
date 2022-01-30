@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="/src/scss/app.scss" />
     <!-- Js -->
     <script type="module" src="/src/js/navigation.js"></script>
+    <script type="module" src="/src/js/product.js"></script>
   </head>
-  <!-- addable classes => mobile__mode, enable__sidebar -->
+  <!-- Todo Js => toggle class product__modal__enabled, not__empty__basket and switch images by arrows or images -->
+  <!-- addable classes => mobile__mode, enable__sidebar, product__modal__enabled -->
   <body>
     <section class="navigation">
       <div class="sidebar">
@@ -44,13 +46,28 @@
       </ul>
       <div class="cart">
         <i class="bx bx-cart cart__icon">
-          <div class="cart__icon__counter">3</div>
+          <div class="cart__icon__counter">0</div>
         </i>
       </div>
-      <!-- addable classes => enable__basket -->
+      <!-- addable classes => enable__basket , not__empty__basket -->
       <div class="basket">
         <div class="basket__header">Cart</div>
-        <div class="basket__cart__items"></div>
+        <div class="basket__content">
+          <div class="cart__item">
+            <img src="/images/image-product-1-thumbnail.jpg" class="cart__item__image" />
+            <div class="cart__item__info">
+              <h4 class="cart__item__info__name">Fall Limited Edition Sneakers</h4>
+              <div class="cart__item__info__pricing">
+                <h4 class="cart__item__info__pricing__price">$125.00</h4>
+                <h4 class="cart__item__info__pricing__quantity">x 1</h4>
+                <h4 class="cart__item__info__pricing__total">$125.00</h4>
+              </div>
+            </div>
+            <i class="bx bxs-trash-alt cart__item__delete"></i>
+          </div>
+          <button class="checkout">Checkout</button>
+        </div>
+        <div class="basket__empty__text">Your cart is empty.</div>
       </div>
       <div class="avatar"><img src="/images/image-avatar.png" /></div>
     </section>
@@ -59,6 +76,10 @@
         <div class="main__preview">
           <div class="image__previewed">
             <img src="/images/image-product-1.jpg" />
+          </div>
+          <div class="arrows">
+            <div class="left"><i class="bx bx-chevron-left"></i></div>
+            <div class="right"><i class="bx bx-chevron-right"></i></div>
           </div>
         </div>
         <div class="other__previews">
@@ -94,7 +115,8 @@
           </h2>
           <h3 class="before__sale">$250.00</h3>
         </div>
-        <div class="product__controls">
+        <!-- addable classes => not__yet__added -->
+        <div class="product__controls not__yet__added">
           <div class="quantity__control">
             <div class="decrease"><i class="bx bx-minus"></i></div>
             <p class="quantity">0</p>
@@ -104,6 +126,34 @@
             <i class="bx bx-cart cart__icon"></i>
             <p>Add to cart</p>
           </button>
+        </div>
+      </div>
+      <div class="product__modal">
+        <div class="main__preview">
+          <div div class="product__modal__exit">
+            <i class="bx bx-plus" style="transform: rotate(45deg)"></i>
+          </div>
+          <div class="image__previewed">
+            <img src="/images/image-product-1.jpg" />
+          </div>
+          <div class="arrows">
+            <div class="left"><i class="bx bx-chevron-left"></i></div>
+            <div class="right"><i class="bx bx-chevron-right"></i></div>
+          </div>
+        </div>
+        <div class="other__previews">
+          <div class="image__thumbnail selected">
+            <img src="/images/image-product-1-thumbnail.jpg" />
+          </div>
+          <div class="image__thumbnail">
+            <img src="/images/image-product-2-thumbnail.jpg" />
+          </div>
+          <div class="image__thumbnail">
+            <img src="/images/image-product-3-thumbnail.jpg" />
+          </div>
+          <div class="image__thumbnail">
+            <img src="/images/image-product-4-thumbnail.jpg" />
+          </div>
         </div>
       </div>
     </section>

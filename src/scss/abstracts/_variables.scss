@@ -15,7 +15,6 @@ $white: hsl(0, 0%, 100%);
 $black: hsl(0, 0%, 0%); // with 75% opacity for lightbox background
 
 // # Typography
-$font__size: 16px;
 $font__family: 'Kumbh Sans', sans-serif; // weights: 400, 700
 
 // # Others
@@ -30,17 +29,24 @@ $tr-1: $dur-s $jiggle__eff;
 $tr-2: $dur-l $snap__eff;
 
 // # Breakpoints
+$desktop-br-1: 920;
+$tablet-br: 650;
+$mobile-br: 480;
+
 $desktop-br-fix: 850;
-$mobile-br-1: 800;
 
 // # Custom Props
 :root {
+  // # Typography
+  --font-size: 16px;
+
   // # Others
   --page-padding: min(10vw, 15rem);
-  --lrg-spacer: 4rem;
-  --med-spacer: 2.5rem;
-  --sml-spacer: 1.875rem;
-  --x-sml-spacer: 1.5rem;
+  --x-lrg-spacer: 4rem;
+  --lrg-spacer: 2.25rem;
+  --med-spacer: 1.875rem;
+  --sml-spacer: 1.5rem;
+  --x-sml-spacer: 0.5rem;
   --med-radius: 0.925rem;
   --sml-radius: 0.55rem;
   --nav-height: 7.5rem;

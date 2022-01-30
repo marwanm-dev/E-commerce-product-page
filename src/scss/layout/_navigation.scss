@@ -7,14 +7,18 @@
   padding: 0 var(--page-padding);
   position: relative;
 
-  --dynamic-space: var(--med-spacer);
-  @include media($mobile-br-1) {
-    --dynamic-space: var(--x-sml-spacer);
+  --dynamic-space-1: var(--sml-spacer);
+  --dynamic-space-2: var(--lrg-spacer);
+  @include media($tablet-br) {
+    --dynamic-space-2: var(--sml-spacer);
+  }
+  @include media($mobile-br) {
+    --dynamic-space-1: var(--x-sml-spacer);
   }
 
   @include flex-row(initial, center);
   @media (max-width: $desktop-br-fix) {
-    --med-spacer: 1.25rem;
+    --lrg-spacer: 1.25rem;
   }
 
   // border-bottom
@@ -34,7 +38,7 @@
     top: 0;
     left: 0;
     background: $white;
-    @include flex-col(initial, flex-start, var(--med-spacer));
+    @include flex-col(initial, flex-start, var(--lrg-spacer));
     padding: calc(calc(var(--nav-height) / 2) - 0.5rem) 0 0 var(--page-padding);
     transition: all $tr-2;
     z-index: 999;
@@ -47,14 +51,14 @@
     &__links {
       @include list-reset;
       margin-right: auto;
-      @include flex-col(initial, initial, var(--sml-spacer));
+      @include flex-col(initial, initial, var(--med-spacer));
       li {
         position: relative;
         &::before {
           content: '';
           position: absolute;
           left: 0;
-          bottom: calc(-1 * var(--sml-spacer) / 2);
+          bottom: calc(-1 * var(--med-spacer) / 2);
           width: 100%;
           height: 3px;
           background: $orange;
@@ -72,17 +76,17 @@
   }
   .menu__open {
     cursor: pointer;
-    margin-right: var(--dynamic-space);
+    margin-right: var(--dynamic-space-2);
     display: none;
   }
   .logo {
     cursor: pointer;
-    margin-right: var(--dynamic-space);
+    margin-right: var(--dynamic-space-2);
   }
   .links {
     @include list-reset;
     margin-right: auto;
-    @include flex-row(initial, initial, var(--sml-spacer));
+    @include flex-row(initial, initial, var(--med-spacer));
     li {
       position: relative;
       &::before {
@@ -129,8 +133,9 @@
     }
   }
   .basket {
+    --fixed-height: 18.25rem;
     width: 22.5rem;
-    height: 15rem;
+    height: var(--fixed-height);
     position: absolute;
     background: $white;
     top: calc(var(--nav-height) - var(--sml-radius));
@@ -142,24 +147,87 @@
     opacity: 0;
     transform: translateY(-1rem);
     pointer-events: none;
+    z-index: 998;
+    @include media($tablet-br) {
+      --fixed-height: 16.25rem;
+    }
     &__header {
       width: 100%;
-      padding: var(--sml-spacer) var(--x-sml-spacer);
+      padding: var(--sml-spacer);
       border-bottom: 1px solid $light__grayish__blue;
     }
-    // TODO
-    &__cart__items {
+    &__content {
+      display: none;
+      .cart__item {
+        width: 100%;
+        height: 4.5rem;
+        @include flex-row(space-between, center);
+        padding: 0 var(--dynamic-space-2);
+        margin: var(--dynamic-space-2) 0;
+        &__image {
+          width: calc(4.5rem - var(--dynamic-space-2));
+          border-radius: calc(var(--sml-radius) / 2);
+        }
+        &__info {
+          &__name {
+          }
+          &__pricing {
+            @include flex-row();
+            &__price {
+            }
+            &__quantity {
+              margin: 0 var(--x-sml-spacer);
+            }
+            &__total {
+            }
+          }
+        }
+        &__delete {
+          color: $grayish__blue;
+          &:hover {
+            color: $dark__blue;
+          }
+        }
+      }
+      .checkout {
+        @include btn-reset;
+        width: calc(100% - var(--dynamic-space-2) * 2);
+        margin: var(--dynamic-space-2);
+        margin-top: 0;
+        background: $orange;
+        box-shadow: 0 0.5rem 1.25rem -0.5rem $orange;
+        padding: 0.75rem var(--dynamic-space-2);
+        border-radius: var(--sml-radius);
+        &:hover {
+          opacity: 0.75;
+        }
+      }
     }
+    .basket__empty__text {
+      color: $dark__grayish__blue;
+      font-weight: 900;
+      margin: auto;
+      // display: none;
+    }
+
     //? animation purposes
     &.enable__basket {
       opacity: 1;
       transform: translateY(0);
       pointer-events: all;
     }
+    &.not__empty__basket {
+      .basket__content {
+        display: block;
+      }
+      .basket__empty__text {
+        display: none;
+      }
+    }
   }
   .avatar {
     cursor: pointer;
-    margin-left: var(--med-spacer);
+    margin-left: var(--dynamic-space-2);
     border: 2px solid transparent;
     border-radius: 50%;
     &:hover {
@@ -183,7 +251,7 @@ body.mobile__mode {
       display: none;
     }
     .basket {
-      width: calc(100% - calc(var(--page-padding) * 2));
+      max-width: 25rem;
       top: calc(var(--nav-height) + var(--sml-radius));
       left: 0;
       right: 0;
@@ -197,13 +265,13 @@ body.mobile__mode {
     }
   }
   &.enable__sidebar {
+    & > * > *:not(.sidebar, .basket:not(.basket__enabled)) {
+      pointer-events: none;
+      opacity: 0.25;
+    }
     .navigation {
       position: initial;
       //* Making sure not to affect sidebar and the basket when it isn't enabled
-      & > *:not(.sidebar, .basket:not(.basket__enabled)) {
-        pointer-events: none;
-        opacity: 0.25;
-      }
 
       &::before {
         display: none;

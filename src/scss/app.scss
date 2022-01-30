@@ -1,3 +1,19 @@
 // Link all the layout/files
+@use './abstracts' as *;
 @use './layout/navigation';
 @use './layout/product';
+:root {
+  @include media($desktop-br-1) {
+    --font-size: 14px;
+    --page-padding: min(6vw, 6rem);
+  }
+  @include media($tablet-br) {
+    --font-size: 16px;
+    --page-padding: min(10vw, 15rem);
+  }
+  @include media($mobile-br) {
+    --font-size: 14px;
+    --page-padding: min(8vw, 8rem);
+    --nav-height: 5.75rem;
+  }
+}
