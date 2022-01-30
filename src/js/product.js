@@ -1,12 +1,10 @@
-// Todo increment & decrement adding to the cart
-// Todo switch images by arrows(in product__modal & in mobile__mode)
-// Todo switch images by thumbnails(in desktop mode & product__modal)
 import numeral from 'numeraljs';
+
 // Variables
+const body = document.body;
 const previewedImage = document.querySelector('.image__previewed');
 const productModalExit = document.querySelector('.product__modal__exit');
 const productControls = document.querySelector('.product__controls');
-const body = document.body;
 const increaseButton = document.querySelector('.increase');
 const decreaseButton = document.querySelector('.decrease');
 const quantityCounter = document.querySelector('.quantity');
@@ -16,9 +14,16 @@ const addToCart = document.querySelector('.add__to__cart');
 const basketContent = document.querySelector('.basket__content');
 const productOldPrice = document.querySelector('.before__sale').textContent;
 const productSalePercentage = document.querySelector('.sale__percentage').textContent;
+const allThumbnails = document.querySelectorAll('.image__thumbnail');
+const imagePreviews = document.querySelectorAll('.main__preview');
+const productModal = document.querySelector('.product__modal');
+const otherPreviews = productModal.querySelector('.other__previews');
+const modalArrows = document.querySelectorAll('.arrow');
+const regex = /\d+/;
 
 // Flags
 let quantityCount = 0;
+let thumbnailsNumbers = [];
 
 // Functions
 const updateCartItem = quantityCount => {
@@ -32,7 +37,6 @@ const updateCartItem = quantityCount => {
   const newPrice = oldPrice * (salePercentage / 100);
   const totalPrice = newPrice * quantityCount;
 
-  // todo use numeral.js
   let innerHTML = `
     <div class="cart__item">
     <img src="/images/image-product-1-thumbnail.jpg" class="cart__item__image" />
@@ -51,41 +55,6 @@ const updateCartItem = quantityCount => {
   basketContent.innerHTML = innerHTML;
   document.querySelector('.cart__item__delete').addEventListener('click', () => deleteCartItem());
 };
-const selectThumbnail = () => {
-  const allThumbnails = document.querySelectorAll('.image__thumbnail');
-  const thumbnailsInProduct = document.querySelectorAll('.product__preview .image__thumbnail');
-  const thumbnailsInModal = document.querySelectorAll('.product__modal .image__thumbnail');
-  const imagePreviewedInProduct = document.querySelector('.product__preview .image__previewed');
-  const imagePreviewedInModal = document.querySelector('.product__modal .image__previewed');
-
-  // todo all thumbnails remove class 'selected' then add on image thumbnail both in product & modal
-  allThumbnails.forEach(thumbnail =>
-    thumbnail.addEventListener('click', () =>
-      allThumbnails.forEach(thumbnail => thumbnail.classList.remove('selected'))
-    )
-  );
-
-  thumbnailsInProduct.forEach(thumbnail =>
-    thumbnail.addEventListener('click', () => {
-      thumbnail.classList.add('selected');
-      const thumbnailImg = thumbnail.querySelector('img');
-      const imagePreviewedImg = imagePreviewedInProduct.querySelector('img');
-      const thumbnailImgSrc = thumbnailImg.src.replace(thumbnailImg.src.match('-thumbnail'), '');
-      imagePreviewedImg.src = thumbnailImgSrc;
-    })
-  );
-  thumbnailsInModal.forEach(thumbnail =>
-    thumbnail.addEventListener('click', () => {
-      thumbnail.classList.add('selected');
-      const thumbnailImg = thumbnail.querySelector('img');
-      const imagePreviewedImg = imagePreviewedInModal.querySelector('img');
-      const thumbnailImgSrc = thumbnailImg.src.replace(thumbnailImg.src.match('-thumbnail'), '');
-      imagePreviewedImg.src = thumbnailImgSrc;
-    })
-  );
-};
-
-selectThumbnail();
 const deleteCartItem = () => {
   quantityCount = 0;
   updateQuantity();
@@ -105,6 +74,50 @@ const updateQuantity = () => {
     basket.classList.remove('not__empty__basket');
   }
 };
+const selectThumbnail = clickedThumbnail => {
+  const thumbnailImg = clickedThumbnail.querySelector('img');
+
+  allThumbnails.forEach(thumbnail => {
+    thumbnail.classList.remove('selected');
+  });
+
+  allThumbnails.forEach(thumbnail => {
+    if (thumbnail.querySelector('img').src === thumbnailImg.src) {
+      thumbnail.classList.add('selected');
+      const selectedThumbnailImg = thumbnail.querySelector('img');
+
+      imagePreviews.forEach(preview => {
+        preview.querySelector('img').src = selectedThumbnailImg.src.replace(
+          selectedThumbnailImg.src.match('-thumbnail'),
+          ''
+        );
+      });
+    }
+  });
+};
+const arrowSwitch = e => {
+  const dir = e.currentTarget.classList[1]; // [0] is 'arrow'
+
+  const thumbnail = otherPreviews.querySelector('.selected');
+  const thumbnailImg = thumbnail.querySelector('img');
+  const thumbnailNumber = thumbnailImg.src
+    .replace(thumbnailImg.src.match('3000'), '') // in case of dev
+    .replace(thumbnailImg.src.match('5000'), '') // in case of build
+    .match(regex);
+
+  for (let i = 0; i < otherPreviews.children.length; i++) {
+    thumbnailsNumbers.unshift(otherPreviews.children.length - i);
+  }
+
+  dir == 'next'
+    ? thumbnailNumber == thumbnailsNumbers[thumbnailsNumbers.length - 1]
+      ? otherPreviews.firstElementChild.click()
+      : thumbnail.nextElementSibling.click()
+    : thumbnailNumber == thumbnailsNumbers[0]
+    ? otherPreviews.lastElementChild.click()
+    : thumbnail.previousElementSibling.click();
+};
+
 // EventListeners
 previewedImage.addEventListener('click', () => {
   body.classList.add('product__modal__enabled');
@@ -125,3 +138,7 @@ decreaseButton.addEventListener('click', () => {
   quantityCount--;
   updateQuantity();
 });
+allThumbnails.forEach(thumbnail =>
+  thumbnail.addEventListener('click', () => selectThumbnail(thumbnail))
+);
+modalArrows.forEach(arrow => arrow.addEventListener('click', e => arrowSwitch(e)));

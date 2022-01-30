@@ -1,4 +1,4 @@
-# ${project-name}
+# E-commerce product page
 
 - Created with Html Sass Javascript using *vite*🔥
 
@@ -8,14 +8,12 @@
 
 - All database linked
 
--
-
 # Live
 
-- https://marodevv-${project-name}.pages.dev/
+- https://marodevv-e-commerce-product-page.pages.dev/
 
 # Credit
 
-- Inspired by ${website}
+- Inspired by Frontend Mentor
 
-- Website: ${link}
+- Website: https://www.frontendmentor.io/

@@ -2,6 +2,7 @@
 @use './abstracts' as *;
 @use './layout/navigation';
 @use './layout/product';
+
 :root {
   @include media($desktop-br-1) {
     --font-size: 14px;

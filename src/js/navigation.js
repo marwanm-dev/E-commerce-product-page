@@ -1,14 +1,14 @@
 // Variables
+const body = document.body;
 const navigation = document.querySelector('.navigation');
 const cart = document.querySelector('.cart');
 const basket = document.querySelector('.basket');
 const menus = document.querySelectorAll('.menu');
 const menuClose = document.querySelector('.menuClose');
 const mqSize = '650px';
-const body = document.body;
+const mq = window.matchMedia(`(max-width: ${mqSize})`);
 
 // Flags
-const mq = window.matchMedia(`(max-width: ${mqSize})`);
 
 // Functions
 const checkMobile = () =>
