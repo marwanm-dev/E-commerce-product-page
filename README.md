@@ -1,12 +1,11 @@
 # E-commerce product page
 
-- Created with Html Sass Javascript using *vite*🔥
+- Fully responsive & animated
 
-- Fully responsive and animated
-
-- Additional stuff (hovers, animations, effects, etc...)
-
-- All database linked
+- Tech used with *vite*🔥:
+  Html
+  Sass
+  Javascript
 
 # Live
 
@@ -15,5 +14,3 @@
 # Credit
 
 - Inspired by Frontend Mentor
-
-- Website: https://www.frontendmentor.io/
