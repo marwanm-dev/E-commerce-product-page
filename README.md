@@ -9,7 +9,7 @@
 
 # Live
 
-- https://marodevv-e-commerce-product-page.pages.dev/
+- https://marodevv-e-commerce-product-page.vercel.app
 
 # Credit
 
