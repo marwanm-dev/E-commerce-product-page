@@ -10,7 +10,7 @@
 
 ## Live
 
-> https://marodevv-e-commerce-landing-page.vercel.app
+> https://marwanmodev-e-commerce-landing-page.vercel.app
 
 ## Credit
 
